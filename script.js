@@ -192,3 +192,4 @@ Thank You.`;
   updateCart();
   toggleCart();
 }
+
