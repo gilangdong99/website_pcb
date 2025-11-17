@@ -32,7 +32,7 @@ function addToCart(name, price) {
     cart.push({ name, price, qty: 1 });
   }
 
-  showNotif(`✔ ${name} ditambahkan`);
+  showNotif(`✔ ${name} added`);
   updateCart();
 }
 
@@ -95,76 +95,98 @@ function toggleCart() {
    CHECKOUT WHATSAPP
 ----------------------------------------------------- */
 function checkout() {
-  if (cart.length === 0) return showNotif("Keranjang kosong!");
+  if (cart.length === 0) return showNotif("Empty basket!");
 
-  let nomorWA = "6281326469250";
+  let nomorWA = "6285807254751";
   let pesanProduk = "";
   let totalHarga = 0;
 
   cart.forEach((item, i) => {
-    pesanProduk += `${i + 1}. ${item.name} x${item.qty} - Rp ${(item.price * item.qty).toLocaleString()}\n`;
+    pesanProduk += 
+`🟩 *${i + 1}. ${item.name}*
+Qty: ${item.qty}
+Price: Rp ${(item.price * item.qty).toLocaleString()}
+-----------------------\n`;
     totalHarga += item.price * item.qty;
   });
 
   let pesan = 
-`Halo, saya ingin melakukan pemesanan:
+`*🛒 NEW ORDER — PT PUTRASEAN RUBBER INDUSTRI*
+
+Hello, I would like to make an order:
 
 ${pesanProduk}
-Total: Rp ${totalHarga.toLocaleString()}
+*💰 TOTAL PAYMENT:* Rp ${totalHarga.toLocaleString()}
 
-Nama:
-Email:
-Alamat:
-Metode Pembayaran:`;
+Please fill in the following data:
+👤 Name :  
+📧 Email :
+📍 Address :  
+💳 Payment Method :  
+
+Thank You🙏`;
 
   let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
   window.open(url, "_blank");
 
-  showNotif("✔ Pesanan dikirim via WhatsApp");
+  showNotif("✔ Order successfully sent via WhatsApp");
   cart = [];
   updateCart();
   toggleCart();
 }
 
+
 /* -----------------------------------------------------
    CHECKOUT EMAIL
 ----------------------------------------------------- */
 function checkoutEmail() {
-  if (cart.length === 0) return showNotif("Keranjang kosong!");
+  if (cart.length === 0) return showNotif("Empty basket!");
 
   let emailTujuan = "gilangdong99@gmail.com";
   let pesanProduk = "";
   let totalHarga = 0;
 
   cart.forEach((item, i) => {
-    pesanProduk += `${i + 1}. ${item.name} x${item.qty} - Rp ${(item.price * item.qty).toLocaleString()}\n`;
+    pesanProduk += 
+`------------------------------
+${i + 1}. ${item.name}
+Qty : ${item.qty}
+Price: Rp ${(item.price * item.qty).toLocaleString()}
+------------------------------
+
+`;
     totalHarga += item.price * item.qty;
   });
 
-  let subject = "Pemesanan Produk - PT Putrasean Rubber Industri";
-  let body =
-`Halo, saya ingin melakukan pemesanan:
+  let subject = "🛒 New Order — PT Putrasean Rubber Industri";
+
+  let body = 
+`🛒 NEW ORDER — PT PUTRASEAN RUBBER INDUSTRI
+
+Hello, I would like to make an order:
 
 ${pesanProduk}
-Total: Rp ${totalHarga.toLocaleString()}
+💰 TOTAL PAYMENT: Rp ${totalHarga.toLocaleString()}
 
-Nama:
-Alamat:
-No. HP:
-Metode Pembayaran:
+Please fill in the following data :
+Name :
+Address :
+No. HP :
+Payment Method :
 
-Terima kasih.`;
+Thank You.`;
 
   let mailtoUrl = `mailto:${emailTujuan}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   let win = window.open(mailtoUrl, "_blank");
 
   setTimeout(() => {
     if (!win || win.closed || typeof win.closed === "undefined") {
-      showNotif("⚠ Tidak bisa membuka email otomatis.");
+      showNotif("⚠ Can't open automatic email.");
     }
   }, 800);
 
-  showNotif("✔ Checkout Email berhasil!");
+  showNotif("✔ Email checkout successful!");
 
   cart = [];
   updateCart();
