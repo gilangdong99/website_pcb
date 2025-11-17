@@ -1,0 +1,378 @@
+/* -----------------------------------------------------
+   GLOBAL STYLE
+----------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0d0d0d;
+  color: #eee;
+  overflow-x: hidden;
+}
+
+:root {
+  --gold: #d4af37;
+  --gold-light: #f6d878;
+  --dark: #0d0d0d;
+  --gray: #222;
+  --soft-gray: #aaa;
+}
+
+/* Smooth fade on load */
+section, header, footer {
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -----------------------------------------------------
+   NAVBAR
+----------------------------------------------------- */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 18px 40px;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(212,175,55,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+nav a {
+  margin-left: 30px;
+  color: #eee;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+  transition: 0.3s;
+}
+
+/* efek garis emas */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background: var(--gold);
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--gold-light);
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* -----------------------------------------------------
+   HERO SECTION
+----------------------------------------------------- */
+.hero {
+  height: 95vh;
+  background: url("https://images.unsplash.com/photo-1581091215367-59ab6b6c2a7c")
+    center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* overlay gelap */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.65);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--gold-light);
+  text-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+.hero p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+/* -----------------------------------------------------
+   SECTION DEFAULT
+----------------------------------------------------- */
+.section {
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+/* kotak isi */
+.content-box {
+  max-width: 800px;
+  margin: auto;
+  background: #111;
+  padding: 25px 35px;
+  border-radius: 15px;
+  color: #ddd;
+  line-height: 1.8;
+  box-shadow: 0 0 25px rgba(212,175,55,0.08);
+}
+
+/* -----------------------------------------------------
+   PRODUK SECTION
+----------------------------------------------------- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  padding: 20px;
+}
+
+.product-card {
+  background: #111;
+  border-radius: 18px;
+  padding-bottom: 20px;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 0 20px rgba(212,175,55,0.12);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Efek hover mewah */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 35px rgba(212,175,55,0.25);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin: 18px 0 5px;
+  color: var(--gold-light);
+  font-size: 20px;
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #eee;
+}
+
+.btn {
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 15px rgba(212,175,55,0.6);
+}
+
+/* -----------------------------------------------------
+   KERANJANG
+----------------------------------------------------- */
+.cart-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--gold);
+  color: black;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  z-index: 999;
+  box-shadow: 0 0 20px rgba(212,175,55,0.5);
+  transition: 0.3s;
+}
+
+.cart-btn:hover {
+  background: var(--gold-light);
+}
+
+/* box keranjang */
+.cart-box {
+  position: fixed;
+  bottom: 95px;
+  right: 25px;
+  width: 330px;
+  background: #111;
+  padding: 20px;
+  border-radius: 18px;
+  display: none;
+  box-shadow: 0 0 30px rgba(212,175,55,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  z-index: 999;
+}
+
+.cart-box h3 {
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.cart-total {
+  margin: 15px 0;
+  font-size: 18px;
+  color: var(--gold-light);
+}
+
+.checkout {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.email {
+  width: 100%;
+  background: #333;
+  color: #fff;
+}
+.email:hover {
+  background: #555;
+}
+
+/* -----------------------------------------------------
+   FOOTER
+----------------------------------------------------- */
+.footer {
+  text-align: center;
+  padding: 25px;
+  background: #0a0a0a;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #bbb;
+}
+
+
+
+/* -----------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  nav a {
+    margin-left: 15px;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .hero p {
+    font-size: 16px;
+  }
+}
+/* NOTIFIKASI MODERN ELEGAN */
+.notif-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--gold);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #000;
+  box-shadow: 0 0 20px rgba(212,175,55,0.5);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+/* QTY BOX */
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--gold);
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.qty-btn:hover {
+  background: var(--gold-light);
+}
+
+.qty-num {
+  font-size: 16px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* ITEMS STYLE */
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.item-name {
+  font-weight: 600;
+}
+
+.item-price {
+  font-weight: 600;
+  color: var(--gold-light);
+}
