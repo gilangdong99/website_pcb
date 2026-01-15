@@ -1,124 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PT.PUTRASEAN RUBBER INDUSTRI</title>
-
-  <!-- GOOGLE FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- SMOOTH SCROLL -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kopi Nusantara</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">PT PUTRASEAN RUBBER INDUSTRI</div>
+<!-- NAVBAR -->
+<nav>
+  <h1>GUNUNG KOPI</h1>
+  <ul class="nav-links">
+    <li><a href="#home">Beranda</a></li>
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#tentang">Tentang Kami</a></li>
+    <li><button class="cart-toggle">Keranjang <span id="cart-count">0</span></button></li>
+    <li><button id="darkModeToggle">🌙</button></li>
+  </ul>
+</nav>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">Profil</a>
-      <a href="#products">Produk</a>
-      <a href="#contact">Kontak</a>
-    </nav>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Trusted Industrial Rubber Manufacturer</h1>
-      <p>Best quality, professional service, and competitive prices.</p>
-    </div>
-  </section>
-
-  <!-- PROFIL PERUSAHAAN -->
-  <section id="about" class="section">
-    <h2 class="title">Company Profile</h2>
-
-    <div class="content-box">
-      <p>
-        <b>PT PUTRASEAN RUBBER INDUSTRI</b> is a company engaged in the production and distribution of various 
-            types of industrial rubber products. With high quality standards, we are committed to providing
-            the best products to meet the needs of industrial sectors worldwide.
-      </p>
-    </div>
-  </section>
-
-  <!-- PRODUK -->
-<section id="products" class="section">
-    <h2 class="title">our products</h2>
-
-    <div class="products">
-
-      <!-- Item -->
-      <div class="product-card">
-        <img src="aab.jpeg" alt="(AAB) brand rubber bands">
-        <h3>(AAB) brand rubber bands</h3>
-        <p class="price">Rp 750.000</p>
-        <button class="btn" onclick="addToCart('(AAB) brand rubber bands',750000)">Add to cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="mini.jpeg" alt="(MINI) brand rubber bands">
-        <h3>(MINI) brand rubber bands</h3>
-        <p class="price">Rp 550.000</p>
-        <button class="btn" onclick="addToCart('(MINI) brand rubber bands',550000)">Add to cart</button>
-      </div>
-
-      <div class="product-card">
-        <img src="temon.jpeg" alt="(TMA) brand rubber bands">
-        <h3>(TMA) brand rubber bands</h3>
-        <p class="price">Rp 120.000</p>
-        <button class="btn" onclick="addToCart('(TMA) brand rubber bands',120000)">Add to cart</button>
-      </div>
-
-    </div>
+<!-- HERO SLIDER -->
+<section class="hero" id="home">
+  <div class="hero-slider">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1511920170033-f8396924c348');"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1510626176961-4b2c9f4f7fc1');"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h2>Selamat Datang di Gunung Kopi</h2>
+    <p>Kami menyajikan kopi premium dari seluruh Nusantara</p>
+    <a href="#produk" class="btn-hero">Lihat Produk</a>
+  </div>
 </section>
 
+<!-- PRODUK -->
+<section id="produk" class="produk-section">
+  <h2>Produk Kami</h2>
+  <div id="product-list" class="product-grid"></div>
+</section>
 
-  <!-- KERANJANG -->
-  <button id="cartBtn" class="cart-btn" onclick="toggleCart()">🛒 Shopping Cart</button>
+<!-- TENTANG KAMI -->
+<section id="tentang" class="about-section">
+  <h2>Tentang Kami</h2>
+  <p>Gunung Kopi menyediakan kopi premium langsung dari petani lokal dengan kualitas terbaik.</p>
+</section>
 
-  <div id="cartBox" class="cart-box">
-    <h3>Shopping Cart</h3>
-
-    <div id="cartItems"></div>
-
-    <div class="cart-total">
-      Total: <b>Rp <span id="total">0</span></b>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <p>© 2026 Gunung Kopi</p>
+    <div class="socials">
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
+      <a href="#"><img src="https://cdn-icons-png.flaticon.com/24/1384/1384063.png" alt="Twitter"></a>
     </div>
-
-    <button class="btn checkout" onclick="checkout()">Checkout WhatsApp</button>
-    <button class="btn email" onclick="checkoutEmail()">Checkout Email</button>
+    <p>Kontak: gunungkopi26@gmail.com | +62 858-0725-4751</p>
   </div>
+</footer>
 
-  <!-- KONTAK -->
-  <section id="contact" class="section">
-    <h2 class="title">Contact Us</h2>
-
-    <div class="content-box">
-      <p><b>Address:</b> Jalan Mastrip No.17B, Surabaya-East Java</p>
-      <p><b>Email:</b> gilangdong99@gmail.com</p>
-      <p><b>Telephone:</b> 085807254751</p>
+<!-- SIDEBAR KERANJANG -->
+<div id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h2>Keranjang Belanja</h2>
+    <button class="cart-close">&times;</button>
+  </div>
+  <div id="cartItems" class="cart-items">Keranjang kosong</div>
+  <div class="cart-footer">
+    <p>Total: Rp <span id="total">0</span></p>
+    <div class="checkout-buttons">
+      <button class="checkout-btn" onclick="openCheckoutModal()">Checkout</button>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    © 2025 PT.PUTRASEAN RUBBER INDUSTRI — All Rights Reserved
-  </footer>
+<!-- OVERLAY BLUR -->
+<div id="overlay" class="overlay"></div>
 
-  <!-- JS -->
-  <script src="script.js"></script>
+<!-- MODAL CHECKOUT -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2>Checkout Pesanan</h2>
+    <form id="checkoutForm">
+      <label>Nama:</label>
+      <input type="text" name="nama" required>
+      <label>Nomor HP:</label>
+      <input type="text" name="hp" required placeholder="contoh: 81234567890">
+      <label>Email:</label>
+      <input type="email" name="email">
+      <label>Alamat:</label>
+      <textarea name="alamat" required></textarea>
+      <div class="modal-buttons">
+        <button type="submit" class="btn-submit">Kirim via WhatsApp</button>
+        <button type="button" class="btn-submit" id="emailBtn">Kirim via Email</button>
+      </div>
+    </form>
+  </div>
+</div>
 
+<script src="script.js"></script>
 </body>
 </html>
